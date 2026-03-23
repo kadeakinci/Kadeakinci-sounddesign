@@ -7,19 +7,31 @@
 
 <style>
 /* -------------------- GLOBAL -------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: #000;
   color: #e6e6e6;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  animation: bgPulse 12s ease-in-out infinite;
 }
 
-/* Smooth fade-in for sections */
+/* Ambient background breathing effect */
+@keyframes bgPulse {
+  0% { background-color: #000; }
+  50% { background-color: #0a0a0a; }
+  100% { background-color: #000; }
+}
+
+/* Fade-in animation */
 .fade {
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -45,6 +57,28 @@ header {
   text-align: center;
   max-width: 900px;
   margin: auto;
+  position: relative;
+}
+
+/* Animated gradient glow behind hero text */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,200,120,0.12), transparent 70%);
+  filter: blur(80px);
+  animation: heroGlow 10s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes heroGlow {
+  0% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.15); }
+  100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
 }
 
 .hero h1 {
@@ -70,12 +104,30 @@ header {
   margin: auto;
 }
 
+/* Title underline animation */
 .section h2 {
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: 2.5rem;
   letter-spacing: 0.03em;
   color: #ffcc8a;
+  position: relative;
+  display: inline-block;
+}
+
+.section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #ffcc8a;
+  transition: width 0.4s ease;
+}
+
+.section:hover h2::after {
+  width: 100%;
 }
 
 /* -------------------- CARDS -------------------- */
@@ -86,10 +138,14 @@ header {
   border-radius: 14px;
   margin-bottom: 3rem;
   transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Glow on hover */
 .card:hover {
   border-color: #ffcc8a;
+  box-shadow: 0 0 25px rgba(255,200,120,0.15);
   transform: translateY(-4px);
 }
 
@@ -126,6 +182,7 @@ audio {
 
 .grid-item:hover {
   border-color: #ffcc8a;
+  box-shadow: 0 0 25px rgba(255,200,120,0.15);
   transform: translateY(-4px);
 }
 
@@ -245,12 +302,13 @@ footer {
 
 <section class="contact fade">
   <h2>Contact</h2>
-  <p>Email: elation@gmail.com</p>
-  <p>Youtube: @Kadeakinci1</p>
+  <p>Email: yourname@gmail.com</p>
+  <p>Instagram: @yourhandle</p>
+  <p>Discord: yourtag</p>
 </section>
 
 <footer class="fade">
-  © 2024 Kade — Sound Design & Composition
+  © 2026 Kade — Sound Design & Composition
 </footer>
 
 </body>
