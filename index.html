@@ -19,104 +19,118 @@ body {
   overflow-x: hidden;
 }
 
-/* -------------------- STARFIELD (TWINKLING + MASSIVE) -------------------- */
-.stars, .stars2, .stars3 {
+/* -------------------- PARALLAX STARFIELD -------------------- */
+#space {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
+  z-index: -10;
   pointer-events: none;
-  z-index: -1;
 }
 
-/* Layer 1 — bright stars */
-.stars {
-  background: transparent;
-  animation: drift1 120s linear infinite;
-}
-
-.stars::after {
+/* Nebula glow (CSS-only) */
+#space::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(2px 2px at 10% 20%, #fff, transparent),
-    radial-gradient(2px 2px at 30% 80%, #fff, transparent),
-    radial-gradient(2px 2px at 70% 40%, #fff, transparent),
-    radial-gradient(2px 2px at 90% 60%, #fff, transparent),
-    radial-gradient(2px 2px at 50% 10%, #fff, transparent),
-    radial-gradient(2px 2px at 20% 90%, #fff, transparent),
-    radial-gradient(2px 2px at 80% 90%, #fff, transparent),
-    radial-gradient(2px 2px at 60% 70%, #fff, transparent),
-    radial-gradient(2px 2px at 40% 30%, #fff, transparent),
-    radial-gradient(2px 2px at 75% 15%, #fff, transparent);
-  animation: twinkle 2s ease-in-out infinite alternate;
+  background: radial-gradient(circle at 50% 50%, rgba(255,150,80,0.12), transparent 70%);
+  filter: blur(120px);
+  animation: nebulaPulse 12s ease-in-out infinite;
 }
 
-/* Layer 2 — medium stars */
+@keyframes nebulaPulse {
+  0% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.2); }
+  100% { opacity: 0.15; transform: scale(1); }
+}
+
+/* -------------------- STAR LAYERS -------------------- */
+.star-layer {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  animation: drift 120s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-600px); }
+}
+
+/* Ultra-dense repeating star patterns */
+.stars1 {
+  background-image:
+    repeating-radial-gradient(circle, #fff 0 1px, transparent 1px 20px);
+  opacity: 0.9;
+  animation: drift 140s linear infinite, twinkle 2s ease-in-out infinite alternate;
+}
+
 .stars2 {
-  background: transparent;
-  animation: drift2 180s linear infinite;
+  background-image:
+    repeating-radial-gradient(circle, #aaa 0 1px, transparent 1px 25px);
+  opacity: 0.6;
+  animation: drift 200s linear infinite, twinkle 3s ease-in-out infinite alternate;
 }
 
-.stars2::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(1.5px 1.5px at 15% 50%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 40% 20%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 60% 80%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 85% 30%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 25% 75%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 70% 95%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 90% 50%, #aaa, transparent),
-    radial-gradient(1.5px 1.5px at 50% 60%, #aaa, transparent);
-  animation: twinkle 3s ease-in-out infinite alternate;
-}
-
-/* Layer 3 — dim stars */
 .stars3 {
-  background: transparent;
-  animation: drift3 240s linear infinite;
-}
-
-.stars3::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(1px 1px at 5% 10%, #666, transparent),
-    radial-gradient(1px 1px at 25% 30%, #666, transparent),
-    radial-gradient(1px 1px at 45% 70%, #666, transparent),
-    radial-gradient(1px 1px at 65% 50%, #666, transparent),
-    radial-gradient(1px 1px at 85% 80%, #666, transparent),
-    radial-gradient(1px 1px at 95% 40%, #666, transparent),
-    radial-gradient(1px 1px at 35% 90%, #666, transparent),
-    radial-gradient(1px 1px at 75% 20%, #666, transparent);
-  animation: twinkle 4s ease-in-out infinite alternate;
-}
-
-/* Drift speeds */
-@keyframes drift1 {
-  from { transform: translateY(0); }
-  to { transform: translateY(-300px); }
-}
-
-@keyframes drift2 {
-  from { transform: translateY(0); }
-  to { transform: translateY(-200px); }
-}
-
-@keyframes drift3 {
-  from { transform: translateY(0); }
-  to { transform: translateY(-150px); }
+  background-image:
+    repeating-radial-gradient(circle, #666 0 1px, transparent 1px 30px);
+  opacity: 0.4;
+  animation: drift 260s linear infinite, twinkle 4s ease-in-out infinite alternate;
 }
 
 /* Twinkling */
 @keyframes twinkle {
-  0% { opacity: 0.4; }
+  0% { opacity: 0.3; }
   100% { opacity: 1; }
+}
+
+/* -------------------- SHOOTING STARS -------------------- */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+  top: -100px;
+  left: 50%;
+  transform: rotate(45deg);
+  animation: shoot 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes shoot {
+  0% { transform: translate(-200px, -200px) rotate(45deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(600px, 600px) rotate(45deg); opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* -------------------- ORBITING PARTICLES -------------------- */
+.orbit {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffcc8a;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  animation: orbit 12s linear infinite;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+/* -------------------- PARALLAX (mouse movement) -------------------- */
+:root {
+  --px: 0px;
+  --py: 0px;
+}
+
+#space {
+  transform: translate(var(--px), var(--py));
+  transition: transform 0.1s linear;
 }
 
 /* -------------------- HEADER -------------------- */
@@ -135,7 +149,6 @@ header {
   text-align: center;
   max-width: 900px;
   margin: auto;
-  position: relative;
 }
 
 .hero h1 {
@@ -228,22 +241,32 @@ footer {
 
 <body>
 
-<!-- STARFIELD LAYERS -->
-<div class="stars"></div>
-<div class="stars2"></div>
-<div class="stars3"></div>
+<!-- FULL COSMIC BACKGROUND -->
+<div id="space">
+  <div class="star-layer stars1"></div>
+  <div class="star-layer stars2"></div>
+  <div class="star-layer stars3"></div>
 
-<header class="fade">
+  <!-- Shooting stars -->
+  <div class="shooting-star"></div>
+  <div class="shooting-star" style="animation-delay: 1.5s;"></div>
+
+  <!-- Orbiting particles -->
+  <div class="orbit"></div>
+  <div class="orbit" style="animation-duration: 18s; transform-origin: 0 0;"></div>
+</div>
+
+<header>
   KADE — SOUND DESIGN & COMPOSITION
 </header>
 
-<section class="hero fade">
+<section class="hero">
   <h1>Sound Design & Music</h1>
   <p>I create sound and music for film, animation, and visual projects.  
   Clean textures, simple ideas, and space for the story.</p>
 </section>
 
-<section class="section fade">
+<section class="section">
   <h2>Featured Sound Design</h2>
 
   <div class="card">
@@ -262,7 +285,7 @@ footer {
   </div>
 </section>
 
-<section class="section fade">
+<section class="section">
   <h2>Composing</h2>
 
   <div class="card">
@@ -276,7 +299,7 @@ footer {
   </div>
 </section>
 
-<section class="section fade">
+<section class="section">
   <h2>Projects</h2>
 
   <div class="grid">
@@ -287,16 +310,26 @@ footer {
   </div>
 </section>
 
-<section class="contact fade">
+<section class="contact">
   <h2>Contact</h2>
   <p>Email: yourname@gmail.com</p>
   <p>Instagram: @yourhandle</p>
   <p>Discord: yourtag</p>
 </section>
 
-<footer class="fade">
+<footer>
   © 2024 Kade — Sound Design & Composition
 </footer>
+
+<script>
+/* -------------------- PARALLAX MOUSE MOVEMENT -------------------- */
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  document.documentElement.style.setProperty("--px", x + "px");
+  document.documentElement.style.setProperty("--py", y + "px");
+});
+</script>
 
 </body>
 </html>
