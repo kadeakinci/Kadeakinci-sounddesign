@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kade — Cinematic Sound Worlds</title>
+<title>Kade — Sound Design & Composition</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -33,24 +33,24 @@ body::before {
   inset: 0;
   background: url("https://i.imgur.com/8fK4h6F.png");
   background-size: cover;
-  opacity: 0.08;
-  animation: fogMove 60s linear infinite;
+  opacity: 0.06;
+  animation: fogMove 70s linear infinite;
   pointer-events: none;
   z-index: 2;
 }
 
 @keyframes fogMove {
-  0% { transform: translateX(-10%) }
-  50% { transform: translateX(10%) }
-  100% { transform: translateX(-10%) }
+  0% { transform: translateX(-8%) }
+  50% { transform: translateX(8%) }
+  100% { transform: translateX(-8%) }
 }
 
 /* -------------------- HEADER -------------------- */
 header {
-  padding: 2rem;
+  padding: 2.5rem;
   text-align: center;
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
   color: #888;
   text-transform: uppercase;
   z-index: 10;
@@ -59,7 +59,7 @@ header {
 
 /* -------------------- HERO -------------------- */
 .hero {
-  padding: 10rem 2rem 8rem;
+  padding: 12rem 2rem 10rem;
   text-align: center;
   max-width: 900px;
   margin: auto;
@@ -68,39 +68,40 @@ header {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 300;
-  letter-spacing: 0.05em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
   background: linear-gradient(90deg, #ffb86c, #ffdca8);
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .hero p {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   color: #b5b5b5;
-  max-width: 600px;
+  max-width: 620px;
   margin: auto;
+  line-height: 1.7;
 }
 
 /* Glow orb behind hero */
 .hero::before {
   content: "";
   position: absolute;
-  top: -10%;
+  top: -15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,200,120,0.15), transparent 70%);
-  filter: blur(40px);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,200,120,0.12), transparent 70%);
+  filter: blur(50px);
   z-index: -1;
 }
 
 /* -------------------- SECTIONS -------------------- */
 .section {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   max-width: 900px;
   margin: auto;
   position: relative;
@@ -108,10 +109,10 @@ header {
 }
 
 .section h2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 300;
-  margin-bottom: 1rem;
-  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
   color: #ffcc8a;
 }
 
@@ -119,9 +120,9 @@ header {
 .card {
   background: #0b0b0b;
   border: 1px solid #1a1a1a;
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
+  padding: 2rem;
+  border-radius: 14px;
+  margin-bottom: 2.5rem;
   transition: 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -129,14 +130,14 @@ header {
 
 .card:hover {
   border-color: #ffcc8a;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,200,120,0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(255,200,120,0.10), transparent 70%);
   opacity: 0;
   transition: 0.3s ease;
 }
@@ -146,13 +147,14 @@ header {
 }
 
 .card h3 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.8rem 0;
   font-weight: 400;
 }
 
 .card p {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.2rem 0;
   color: #b5b5b5;
+  line-height: 1.6;
 }
 
 audio {
@@ -164,7 +166,7 @@ audio {
 /* -------------------- FOOTER -------------------- */
 footer {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   color: #777;
   font-size: 0.9rem;
   z-index: 10;
@@ -178,12 +180,13 @@ footer {
 <div class="fog"></div>
 
 <header>
-  KADE — CINEMATIC SOUND DESIGN
+  KADE — SOUND DESIGN & COMPOSITION
 </header>
 
 <section class="hero">
-  <h1>Cinematic Sound Worlds</h1>
-  <p>I design sound that feels alive — warm textures, emotional detail, and atmospheric depth for film, animation, and storytelling.</p>
+  <h1>Sound Design & Music</h1>
+  <p>I create sound and music for film, animation, and visual projects.  
+  Clean textures, focused detail, and a style that leaves space for the story.</p>
 </section>
 
 <section class="section">
@@ -191,7 +194,7 @@ footer {
 
   <div class="card">
     <h3>Frog Jump — Stylized Foley</h3>
-    <p>A blend of tactile realism and character-driven exaggeration.</p>
+    <p>A simple character moment with a mix of realism and design.</p>
     <audio controls>
       <source src="frog.mp3" type="audio/mpeg">
     </audio>
@@ -199,15 +202,15 @@ footer {
 
   <div class="card">
     <h3>Rain Room — Ambient Texture</h3>
-    <p>Layered noise, filtered field recordings, and warm harmonic beds.</p>
+    <p>Soft noise layers and subtle movement for atmosphere.</p>
     <audio controls>
       <source src="rain.mp3" type="audio/mpeg">
     </audio>
   </div>
 
   <div class="card">
-    <h3>Glass Pulse — Cinematic Hit</h3>
-    <p>Designed for tension, impact, and emotional weight.</p>
+    <h3>Glass Pulse — Hit / Transition</h3>
+    <p>A clean, bright impact for edits or scene changes.</p>
     <audio controls>
       <source src="glass.mp3" type="audio/mpeg">
     </audio>
@@ -215,17 +218,19 @@ footer {
 </section>
 
 <section class="section">
-  <h2>For Filmmakers & Animators</h2>
-  <p>I create sound that supports the story — from intimate character moments to stylized animation and surreal worlds. My work blends realism with imagination, always grounded in emotion.</p>
+  <h2>What I Do</h2>
+  <p>I work on sound design, foley, ambient textures, and original music.  
+  My goal is to support the visuals without getting in the way — simple, clear, and intentional.</p>
 </section>
 
 <section class="section">
   <h2>About Me</h2>
-  <p>I’m Kade — a sound designer drawn to warm harmony, subtle emotion, and the quiet details that make a scene feel alive. I blend musicianship with tactile sound design, building textures that sit between realism and imagination.</p>
+  <p>I’m Kade. I like building sound and music that feel grounded and emotional.  
+  I focus on detail, space, and tone — whether it’s a small animation or a bigger cinematic moment.</p>
 </section>
 
 <footer>
-  © 2024 Kade — Cinematic Sound Design
+  © 2024 Kade — Sound Design & Composition
 </footer>
 
 </body>
