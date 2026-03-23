@@ -13,98 +13,104 @@ html {
 
 body {
   margin: 0;
-  background: #000 !important;
+  background: #000;
   color: #e6e6e6;
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
-  animation: bgPulse 12s ease-in-out infinite;
 }
 
-/* Ambient breathing background */
-@keyframes bgPulse {
-  0% { background-color: #000; }
-  50% { background-color: #080808; }
-  100% { background-color: #000; }
-}
-
-/* Fade-in animation */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1.2s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* -------------------- STARFIELD (MASSIVE + TWINKLING) -------------------- */
-.starfield, .starfield2, .starfield3 {
+/* -------------------- STARFIELD (TWINKLING + MASSIVE) -------------------- */
+.stars, .stars2, .stars3 {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: -1;
 }
 
 /* Layer 1 — bright stars */
-.starfield {
+.stars {
   background: transparent;
-  box-shadow:
-    /* 150 stars */
-    10vw 10vh #fff, 20vw 30vh #fff, 30vw 50vh #fff, 40vw 70vh #fff, 50vw 20vh #fff,
-    60vw 80vh #fff, 70vw 40vh #fff, 80vw 60vh #fff, 90vw 10vh #fff, 15vw 90vh #fff,
-    25vw 75vh #fff, 35vw 15vh #fff, 45vw 95vh #fff, 55vw 55vh #fff, 65vw 25vh #fff,
-    75vw 85vh #fff, 85vw 35vh #fff, 95vw 65vh #fff,
-    10vw 110vh #fff, 20vw 130vh #fff, 30vw 150vh #fff, 40vw 170vh #fff, 50vw 120vh #fff,
-    60vw 180vh #fff, 70vw 140vh #fff, 80vw 160vh #fff, 90vw 110vh #fff, 15vw 190vh #fff;
-  width: 2px;
-  height: 2px;
-  animation: drift1 90s linear infinite, twinkle 2s ease-in-out infinite alternate;
+  animation: drift1 120s linear infinite;
+}
+
+.stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(2px 2px at 10% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 30% 80%, #fff, transparent),
+    radial-gradient(2px 2px at 70% 40%, #fff, transparent),
+    radial-gradient(2px 2px at 90% 60%, #fff, transparent),
+    radial-gradient(2px 2px at 50% 10%, #fff, transparent),
+    radial-gradient(2px 2px at 20% 90%, #fff, transparent),
+    radial-gradient(2px 2px at 80% 90%, #fff, transparent),
+    radial-gradient(2px 2px at 60% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 40% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 75% 15%, #fff, transparent);
+  animation: twinkle 2s ease-in-out infinite alternate;
 }
 
 /* Layer 2 — medium stars */
-.starfield2 {
+.stars2 {
   background: transparent;
-  box-shadow:
-    /* 100 stars */
-    12vw 20vh #aaa, 22vw 40vh #aaa, 32vw 60vh #aaa, 42vw 80vh #aaa, 52vw 30vh #aaa,
-    62vw 90vh #aaa, 72vw 50vh #aaa, 82vw 70vh #aaa, 92vw 20vh #aaa, 18vw 95vh #aaa,
-    28vw 85vh #aaa, 38vw 25vh #aaa, 48vw 100vh #aaa, 58vw 65vh #aaa, 68vw 35vh #aaa,
-    78vw 88vh #aaa, 88vw 45vh #aaa, 98vw 75vh #aaa;
-  width: 1.5px;
-  height: 1.5px;
-  animation: drift2 140s linear infinite, twinkle 3s ease-in-out infinite alternate;
+  animation: drift2 180s linear infinite;
+}
+
+.stars2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1.5px 1.5px at 15% 50%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 40% 20%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 60% 80%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 85% 30%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 25% 75%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 70% 95%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 90% 50%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 50% 60%, #aaa, transparent);
+  animation: twinkle 3s ease-in-out infinite alternate;
 }
 
 /* Layer 3 — dim stars */
-.starfield3 {
+.stars3 {
   background: transparent;
-  box-shadow:
-    /* 80 stars */
-    5vw 15vh #666, 15vw 35vh #666, 25vw 55vh #666, 35vw 75vh #666, 45vw 25vh #666,
-    55vw 85vh #666, 65vw 45vh #666, 75vw 65vh #666, 85vw 15vh #666, 95vw 95vh #666;
-  width: 1px;
-  height: 1px;
-  animation: drift3 200s linear infinite, twinkle 4s ease-in-out infinite alternate;
+  animation: drift3 240s linear infinite;
+}
+
+.stars3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 5% 10%, #666, transparent),
+    radial-gradient(1px 1px at 25% 30%, #666, transparent),
+    radial-gradient(1px 1px at 45% 70%, #666, transparent),
+    radial-gradient(1px 1px at 65% 50%, #666, transparent),
+    radial-gradient(1px 1px at 85% 80%, #666, transparent),
+    radial-gradient(1px 1px at 95% 40%, #666, transparent),
+    radial-gradient(1px 1px at 35% 90%, #666, transparent),
+    radial-gradient(1px 1px at 75% 20%, #666, transparent);
+  animation: twinkle 4s ease-in-out infinite alternate;
 }
 
 /* Drift speeds */
 @keyframes drift1 {
   from { transform: translateY(0); }
-  to { transform: translateY(-300vh); }
+  to { transform: translateY(-300px); }
 }
 
 @keyframes drift2 {
   from { transform: translateY(0); }
-  to { transform: translateY(-200vh); }
+  to { transform: translateY(-200px); }
 }
 
 @keyframes drift3 {
   from { transform: translateY(0); }
-  to { transform: translateY(-150vh); }
+  to { transform: translateY(-150px); }
 }
 
 /* Twinkling */
@@ -132,27 +138,6 @@ header {
   position: relative;
 }
 
-/* Glow behind hero */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255,200,120,0.12), transparent 70%);
-  filter: blur(80px);
-  animation: heroGlow 10s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes heroGlow {
-  0% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.15); }
-  100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
-}
-
 .hero h1 {
   font-size: 3.4rem;
   font-weight: 300;
@@ -176,30 +161,12 @@ header {
   margin: auto;
 }
 
-/* Title underline animation */
 .section h2 {
   font-size: 2rem;
   font-weight: 300;
   margin-bottom: 2.5rem;
   letter-spacing: 0.03em;
   color: #ffcc8a;
-  position: relative;
-  display: inline-block;
-}
-
-.section h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #ffcc8a;
-  transition: width 0.4s ease;
-}
-
-.section:hover h2::after {
-  width: 100%;
 }
 
 /* -------------------- CARDS -------------------- */
@@ -210,8 +177,6 @@ header {
   border-radius: 14px;
   margin-bottom: 3rem;
   transition: 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 
 .card:hover {
@@ -220,6 +185,118 @@ header {
   transform: translateY(-4px);
 }
 
-.card h3 {
-  margin: 0 0 0.8rem 0;
-  font
+audio {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* -------------------- GRID -------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.grid-item {
+  background: #0b0b0b;
+  border: 1px solid #1a1a1a;
+  padding: 1.8rem;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.grid-item:hover {
+  border-color: #ffcc8a;
+  box-shadow: 0 0 25px rgba(255,200,120,0.15);
+  transform: translateY(-4px);
+}
+
+/* -------------------- CONTACT -------------------- */
+.contact {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STARFIELD LAYERS -->
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<header class="fade">
+  KADE — SOUND DESIGN & COMPOSITION
+</header>
+
+<section class="hero fade">
+  <h1>Sound Design & Music</h1>
+  <p>I create sound and music for film, animation, and visual projects.  
+  Clean textures, simple ideas, and space for the story.</p>
+</section>
+
+<section class="section fade">
+  <h2>Featured Sound Design</h2>
+
+  <div class="card">
+    <h3>Frog Jump — Stylized Foley</h3>
+    <audio controls><source src="frog.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h3>Rain Room — Ambient Texture</h3>
+    <audio controls><source src="rain.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h3>Glass Pulse — Hit / Transition</h3>
+    <audio controls><source src="glass.mp3"></audio>
+  </div>
+</section>
+
+<section class="section fade">
+  <h2>Composing</h2>
+
+  <div class="card">
+    <h3>Soft Piano Cue</h3>
+    <audio controls><source src="piano.mp3"></audio>
+  </div>
+
+  <div class="card">
+    <h3>Ambient Bed</h3>
+    <audio controls><source src="ambient.mp3"></audio>
+  </div>
+</section>
+
+<section class="section fade">
+  <h2>Projects</h2>
+
+  <div class="grid">
+    <div class="grid-item"><h3>Short Animation</h3></div>
+    <div class="grid-item"><h3>Atmospheric Loop</h3></div>
+    <div class="grid-item"><h3>Character Foley</h3></div>
+    <div class="grid-item"><h3>Music Sketches</h3></div>
+  </div>
+</section>
+
+<section class="contact fade">
+  <h2>Contact</h2>
+  <p>Email: yourname@gmail.com</p>
+  <p>Instagram: @yourhandle</p>
+  <p>Discord: yourtag</p>
+</section>
+
+<footer class="fade">
+  © 2024 Kade — Sound Design & Composition
+</footer>
+
+</body>
+</html>
