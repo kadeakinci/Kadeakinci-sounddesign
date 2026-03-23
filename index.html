@@ -1,9 +1,232 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Test</title>
-  </head>
-  <body style="background:black; color:white;">
-    <h1>If you see this, your site works.</h1>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kade — Cinematic Sound Worlds</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* -------------------- GLOBAL -------------------- */
+body {
+  margin: 0;
+  background: #050505;
+  color: #e6e6e6;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Film grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  z-index: 999;
+}
+
+/* Floating fog */
+.fog {
+  position: fixed;
+  inset: 0;
+  background: url("https://i.imgur.com/8fK4h6F.png");
+  background-size: cover;
+  opacity: 0.08;
+  animation: fogMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes fogMove {
+  0% { transform: translateX(-10%) }
+  50% { transform: translateX(10%) }
+  100% { transform: translateX(-10%) }
+}
+
+/* -------------------- HEADER -------------------- */
+header {
+  padding: 2rem;
+  text-align: center;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  z-index: 10;
+  position: relative;
+}
+
+/* -------------------- HERO -------------------- */
+.hero {
+  padding: 10rem 2rem 8rem;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #ffb86c, #ffdca8);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #b5b5b5;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Glow orb behind hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,200,120,0.15), transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+/* -------------------- SECTIONS -------------------- */
+.section {
+  padding: 6rem 2rem;
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.section h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.04em;
+  color: #ffcc8a;
+}
+
+/* -------------------- CARDS -------------------- */
+.card {
+  background: #0b0b0b;
+  border: 1px solid #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: #ffcc8a;
+  transform: translateY(-3px);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,200,120,0.12), transparent 70%);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.card p {
+  margin: 0 0 1rem 0;
+  color: #b5b5b5;
+}
+
+audio {
+  width: 100%;
+  margin-top: 0.5rem;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #777;
+  font-size: 0.9rem;
+  z-index: 10;
+  position: relative;
+}
+</style>
+</head>
+
+<body>
+
+<div class="fog"></div>
+
+<header>
+  KADE — CINEMATIC SOUND DESIGN
+</header>
+
+<section class="hero">
+  <h1>Cinematic Sound Worlds</h1>
+  <p>I design sound that feels alive — warm textures, emotional detail, and atmospheric depth for film, animation, and storytelling.</p>
+</section>
+
+<section class="section">
+  <h2>Featured Work</h2>
+
+  <div class="card">
+    <h3>Frog Jump — Stylized Foley</h3>
+    <p>A blend of tactile realism and character-driven exaggeration.</p>
+    <audio controls>
+      <source src="frog.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="card">
+    <h3>Rain Room — Ambient Texture</h3>
+    <p>Layered noise, filtered field recordings, and warm harmonic beds.</p>
+    <audio controls>
+      <source src="rain.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="card">
+    <h3>Glass Pulse — Cinematic Hit</h3>
+    <p>Designed for tension, impact, and emotional weight.</p>
+    <audio controls>
+      <source src="glass.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<section class="section">
+  <h2>For Filmmakers & Animators</h2>
+  <p>I create sound that supports the story — from intimate character moments to stylized animation and surreal worlds. My work blends realism with imagination, always grounded in emotion.</p>
+</section>
+
+<section class="section">
+  <h2>About Me</h2>
+  <p>I’m Kade — a sound designer drawn to warm harmony, subtle emotion, and the quiet details that make a scene feel alive. I blend musicianship with tactile sound design, building textures that sit between realism and imagination.</p>
+</section>
+
+<footer>
+  © 2024 Kade — Cinematic Sound Design
+</footer>
+
+</body>
 </html>
