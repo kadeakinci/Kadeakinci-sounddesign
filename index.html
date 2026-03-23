@@ -6,39 +6,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* -------------------- GLOBAL -------------------- */
-html {
-  scroll-behavior: smooth;
+/* -------------------- STARFIELD (NO IMAGES) -------------------- */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: -2;
 }
 
-body {
-  margin: 0;
-  background: #000;
-  color: #e6e6e6;
-  font-family: "Inter", sans-serif;
-  overflow-x: hidden;
-  animation: bgPulse 12s ease-in-out infinite;
+/* Base star layer */
+.stars {
+  background: transparent;
+  box-shadow:
+    1000px 200px #fff,
+    300px 800px #fff,
+    1200px 600px #fff,
+    700px 300px #fff,
+    400px 1000px #fff,
+    900px 900px #fff,
+    150px 400px #fff,
+    600px 1200px #fff;
+  animation: starDrift 120s linear infinite;
 }
 
-/* Ambient background breathing effect */
-@keyframes bgPulse {
-  0% { background-color: #000; }
-  50% { background-color: #0a0a0a; }
-  100% { background-color: #000; }
+/* Mid layer */
+.stars2 {
+  background: transparent;
+  box-shadow:
+    200px 300px #aaa,
+    800px 500px #aaa,
+    500px 900px #aaa,
+    1100px 700px #aaa,
+    300px 1100px #aaa;
+  animation: starDrift 180s linear infinite;
 }
 
-/* Fade-in animation */
-.fade {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 1.2s ease forwards;
+/* Deep layer */
+.stars3 {
+  background: transparent;
+  box-shadow:
+    400px 200px #666,
+    900px 400px #666,
+    200px 900px #666,
+    1000px 1100px #666;
+  animation: starDrift 240s linear infinite;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Slow drifting motion */
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2000px); }
 }
 
 /* -------------------- HEADER -------------------- */
