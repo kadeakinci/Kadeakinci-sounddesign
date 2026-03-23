@@ -6,60 +6,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* -------------------- STARFIELD (NO IMAGES) -------------------- */
-.stars, .stars2, .stars3 {
+/* STARFIELD — SAFE VERSION */
+.stars {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-  z-index: -2;
-}
-
-/* Base star layer */
-.stars {
+  width: 2px;
+  height: 2px;
   background: transparent;
   box-shadow:
-    1000px 200px #fff,
-    300px 800px #fff,
-    1200px 600px #fff,
-    700px 300px #fff,
-    400px 1000px #fff,
-    900px 900px #fff,
-    150px 400px #fff,
-    600px 1200px #fff;
-  animation: starDrift 120s linear infinite;
+    50vw 10vh #fff,
+    20vw 40vh #fff,
+    80vw 70vh #fff,
+    10vw 90vh #fff,
+    60vw 30vh #fff,
+    90vw 50vh #fff,
+    30vw 80vh #fff,
+    70vw 20vh #fff;
+  animation: drift 60s linear infinite;
+  z-index: -1;
 }
 
-/* Mid layer */
-.stars2 {
-  background: transparent;
-  box-shadow:
-    200px 300px #aaa,
-    800px 500px #aaa,
-    500px 900px #aaa,
-    1100px 700px #aaa,
-    300px 1100px #aaa;
-  animation: starDrift 180s linear infinite;
-}
-
-/* Deep layer */
-.stars3 {
-  background: transparent;
-  box-shadow:
-    400px 200px #666,
-    900px 400px #666,
-    200px 900px #666,
-    1000px 1100px #666;
-  animation: starDrift 240s linear infinite;
-}
-
-/* Slow drifting motion */
-@keyframes starDrift {
+@keyframes drift {
   from { transform: translateY(0); }
-  to { transform: translateY(-2000px); }
+  to { transform: translateY(-200vh); }
 }
 
 /* -------------------- HEADER -------------------- */
@@ -236,7 +206,7 @@ footer {
 </head>
 
 <body>
-
+<div class="stars"></div>
 <header class="fade">
   KADE — SOUND DESIGN & COMPOSITION
 </header>
