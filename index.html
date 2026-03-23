@@ -15,6 +15,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Smooth fade-in for sections */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* -------------------- HEADER -------------------- */
 header {
   padding: 3rem;
@@ -27,14 +41,14 @@ header {
 
 /* -------------------- HERO -------------------- */
 .hero {
-  padding: 12rem 2rem 10rem;
+  padding: 14rem 2rem 12rem;
   text-align: center;
   max-width: 900px;
   margin: auto;
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 300;
   letter-spacing: 0.03em;
   margin-bottom: 1.5rem;
@@ -42,24 +56,24 @@ header {
 }
 
 .hero p {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #b5b5b5;
-  max-width: 620px;
+  max-width: 650px;
   margin: auto;
   line-height: 1.7;
 }
 
 /* -------------------- SECTIONS -------------------- */
 .section {
-  padding: 8rem 2rem;
+  padding: 9rem 2rem;
   max-width: 900px;
   margin: auto;
 }
 
 .section h2 {
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   letter-spacing: 0.03em;
   color: #ffcc8a;
 }
@@ -95,6 +109,44 @@ audio {
   margin-top: 0.5rem;
 }
 
+/* -------------------- PROJECT GRID -------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.grid-item {
+  background: #0b0b0b;
+  border: 1px solid #1a1a1a;
+  padding: 1.8rem;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.grid-item:hover {
+  border-color: #ffcc8a;
+  transform: translateY(-4px);
+}
+
+.grid-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+}
+
+/* -------------------- CONTACT -------------------- */
+.contact {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.contact p {
+  color: #b5b5b5;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
 /* -------------------- FOOTER -------------------- */
 footer {
   text-align: center;
@@ -107,18 +159,18 @@ footer {
 
 <body>
 
-<header>
+<header class="fade">
   KADE — SOUND DESIGN & COMPOSITION
 </header>
 
-<section class="hero">
+<section class="hero fade">
   <h1>Sound Design & Music</h1>
   <p>I create sound and music for film, animation, and visual projects.  
   Clean textures, simple ideas, and space for the story.</p>
 </section>
 
-<section class="section">
-  <h2>Featured Work</h2>
+<section class="section fade">
+  <h2>Featured Sound Design</h2>
 
   <div class="card">
     <h3>Frog Jump — Stylized Foley</h3>
@@ -145,19 +197,60 @@ footer {
   </div>
 </section>
 
-<section class="section">
-  <h2>What I Do</h2>
-  <p>I work on sound design, foley, ambient textures, and original music.  
-  My goal is to support the visuals without getting in the way.</p>
+<section class="section fade">
+  <h2>Composing</h2>
+
+  <div class="card">
+    <h3>Soft Piano Cue</h3>
+    <p>A quiet, minimal cue built around simple harmony.</p>
+    <audio controls>
+      <source src="piano.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="card">
+    <h3>Ambient Bed</h3>
+    <p>A slow, evolving pad for mood and atmosphere.</p>
+    <audio controls>
+      <source src="ambient.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 </section>
 
-<section class="section">
-  <h2>About Me</h2>
-  <p>I’m Kade. I like building sound and music that feel grounded and intentional.  
-  I focus on detail, space, and tone — whether it’s a small animation or a bigger cinematic moment.</p>
+<section class="section fade">
+  <h2>Projects</h2>
+
+  <div class="grid">
+    <div class="grid-item">
+      <h3>Short Animation</h3>
+      <p>Sound design and light music for a small animated scene.</p>
+    </div>
+
+    <div class="grid-item">
+      <h3>Atmospheric Loop</h3>
+      <p>A looping ambient texture for menus or backgrounds.</p>
+    </div>
+
+    <div class="grid-item">
+      <h3>Character Foley</h3>
+      <p>Footsteps, cloth, and small movement sounds.</p>
+    </div>
+
+    <div class="grid-item">
+      <h3>Music Sketches</h3>
+      <p>Short ideas exploring harmony, tone, and rhythm.</p>
+    </div>
+  </div>
 </section>
 
-<footer>
+<section class="contact fade">
+  <h2>Contact</h2>
+  <p>Email: yourname@gmail.com</p>
+  <p>Instagram: @yourhandle</p>
+  <p>Discord: yourtag</p>
+</section>
+
+<footer class="fade">
   © 2024 Kade — Sound Design & Composition
 </footer>
 
