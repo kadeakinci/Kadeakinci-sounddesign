@@ -6,30 +6,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* STARFIELD — SAFE VERSION */
-.stars {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow:
-    50vw 10vh #fff,
-    20vw 40vh #fff,
-    80vw 70vh #fff,
-    10vw 90vh #fff,
-    60vw 30vh #fff,
-    90vw 50vh #fff,
-    30vw 80vh #fff,
-    70vw 20vh #fff;
-  animation: drift 60s linear infinite;
-  z-index: -1;
+/* -------------------- GLOBAL -------------------- */
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes drift {
+body {
+  margin: 0;
+  background: #000 !important; /* Hard force black */
+  color: #e6e6e6;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  animation: bgPulse 12s ease-in-out infinite;
+}
+
+/* Ambient breathing background */
+@keyframes bgPulse {
+  0% { background-color: #000; }
+  50% { background-color: #080808; }
+  100% { background-color: #000; }
+}
+
+/* Fade-in animation */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- STARFIELD (NO IMAGES) -------------------- */
+.starfield {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+    radial-gradient(2px 2px at 80% 70%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 50% 90%, #aaa, transparent),
+    radial-gradient(1.5px 1.5px at 10% 80%, #777, transparent),
+    radial-gradient(1px 1px at 70% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 60%, #ccc, transparent),
+    radial-gradient(1px 1px at 90% 40%, #999, transparent);
+  animation: starFloat 40s linear infinite;
+}
+
+@keyframes starFloat {
   from { transform: translateY(0); }
-  to { transform: translateY(-200vh); }
+  to { transform: translateY(-200px); }
 }
 
 /* -------------------- HEADER -------------------- */
@@ -51,7 +82,7 @@ header {
   position: relative;
 }
 
-/* Animated gradient glow behind hero text */
+/* Animated glow behind hero */
 .hero::before {
   content: "";
   position: absolute;
@@ -206,7 +237,9 @@ footer {
 </head>
 
 <body>
-<div class="stars"></div>
+
+<div class="starfield"></div>
+
 <header class="fade">
   KADE — SOUND DESIGN & COMPOSITION
 </header>
@@ -299,7 +332,7 @@ footer {
 </section>
 
 <footer class="fade">
-  © 2026 Kade — Sound Design & Composition
+  © 2024 Kade — Sound Design & Composition
 </footer>
 
 </body>
